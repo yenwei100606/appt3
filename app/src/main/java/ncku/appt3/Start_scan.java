@@ -13,12 +13,13 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class Start_scan extends AppCompatActivity {
-    private Button start,exit;
+    //private Button start,exit;
     private IntentIntegrator scanIntegrator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_scan);
+
         //start = (Button)findViewById(R.id.btn_start);
         //exit = (Button)findViewById(R.id.btn_exit);
 
@@ -26,15 +27,11 @@ public class Start_scan extends AppCompatActivity {
 
     public void clickStart(View v)
     {
-
-        /*
         scanIntegrator = new IntentIntegrator(Start_scan.this);
+        scanIntegrator.setCaptureActivity(Scan_Activity.class);
         scanIntegrator.setPrompt("請掃描");
         scanIntegrator.initiateScan();
         scanIntegrator.setOrientationLocked(false);
-*/
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
 
     }
 
@@ -47,8 +44,9 @@ public class Start_scan extends AppCompatActivity {
         if (result != null) {
             String scanContent = result.getContents();
             String scanFormat = result.getFormatName();
-            background bg = new background(this);
-            bg.execute(scanContent);
+
+            //background bg = new background(this);
+            //bg.execute(scanContent);
         }
 
 

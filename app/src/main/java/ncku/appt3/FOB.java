@@ -577,6 +577,12 @@ public class FOB extends AppCompatActivity implements TextureView.SurfaceTexture
         startActivity(i);
     }
 
+    public void clickBack(View v)
+    {
+        Intent intent = new Intent(this,fob_instr.class);
+        startActivity(intent);
+    }
+
     public void backtoHome(View v){
         /*
         Intent i = new Intent();

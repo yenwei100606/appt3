@@ -63,8 +63,7 @@ public class urs_result extends AppCompatActivity{
         protected String doInBackground(String... params) {
             try {
                 // Enter URL address where your php file resides
-                url = new URL("http://140.116.226.182/mems_client/357380100495261/urs.php");
-                //url = new URL("")
+                url = new URL("http://140.116.226.182/mems_client/355758080228806/urs.php");
                 //SAMSUNG 355758080228806
                 //SONY 358096071301846
 

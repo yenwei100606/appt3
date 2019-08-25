@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ncku.appt3"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="27" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="ncku.appt3.login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="ncku.appt3.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.FOB"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.URS"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.fob_result"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.history_re"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.replace"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.trend"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.uploadconfirm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.detail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.uploadconfirmURS"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.replaceURS"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="ncku.appt3.urs_result"
+            android:screenOrientation="portrait" />
+        <activity android:name="ncku.appt3.Start_scan" />
+        <activity android:name="ncku.appt3.create_account" />
+        <activity android:name="ncku.appt3.Scan_Activity" />
+        <activity android:name="ncku.appt3.URS_intr" />
+        <activity android:name="ncku.appt3.fob_instr" />
+    </application>
+
+</manifest>

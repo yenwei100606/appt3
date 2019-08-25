@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\memsl\\AndroidStudioProjects\\appt3_v3\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\memsl\\.gradle\\caches\\transforms-1\\files-1.1\\zxing-android-embedded-3.5.0.aar\\67b5cb694895d2ce813a14a31da98369\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "3",
+                        "endColumns": "10",
+                        "endOffsets": "150"
+                    }
+                }
+            ]
+        }
+    ]
+}

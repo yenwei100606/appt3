@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Start_scan">
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,9 +66,11 @@
         <activity
             android:name=".urs_result"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Scan_QRcode"
-            android:screenOrientation="portrait" />
+        <activity android:name=".Start_scan" />
+        <activity android:name=".create_account" />
+        <activity android:name=".Scan_Activity" />
+        <activity android:name=".URS_intr" />
+        <activity android:name=".fob_instr"></activity>
     </application>
 
 </manifest>

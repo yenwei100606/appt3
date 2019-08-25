@@ -572,13 +572,21 @@ public class URS extends AppCompatActivity implements TextureView.SurfaceTexture
         startActivity(i);
     }
 
-    public void backtoHome(View v){
+    public void clickBack(View v){
         //Intent i = new Intent(this,MainActivity.class);
         Intent i = new Intent();
-        i.setClass(this, MainActivity.class);
+        i.setClass(this, URS_intr.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
 
+    }
+
+    public void backtoHome(View v)
+    {
+        Intent i = new Intent();
+        i.setClass(this,MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
