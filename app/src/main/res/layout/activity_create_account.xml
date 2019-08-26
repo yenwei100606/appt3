@@ -139,12 +139,12 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/type"
+                    android:id="@+id/country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"></Spinner>
 
                 <Spinner
-                    android:id="@+id/type2"
+                    android:id="@+id/country2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"></Spinner>
             </LinearLayout>

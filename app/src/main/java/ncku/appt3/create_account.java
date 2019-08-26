@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,10 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -30,19 +35,23 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class create_account extends AppCompatActivity {
     private EditText name,birthday,email,password,password_check,address;
     private RadioButton sexF,sexM;
     private RadioGroup radiosex;
-    private  String[] type = new String[] {"台北市","新北市","桃園市","台中市","台南市","高雄市"};
-    private String[] city = new String[]{};
-    private String[][] type2 = new String[][]{{"中正區","大同區","中山區","中山區","松山區","大安區","萬華區","信義區","士林區","北投區","內湖區","南港區","文山區"},{""},{},{},{},{}};
     private Spinner sp,sp2;
     private Context context;
 
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
+
+    List<String> country_list = new ArrayList<String>();
+    //List<String> list = new ArrayList<String>();
+    List<List<String>> total_list = new ArrayList<List<String>>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,18 +69,40 @@ public class create_account extends AppCompatActivity {
         sexM=(RadioButton)findViewById(R.id.radio_M);
         sexF=(RadioButton)findViewById(R.id.radio_F);
         radiosex = (RadioGroup)findViewById(R.id.radio_Sex);
+        String data = getjson("taiwan_city.json");      //從asset讀取json
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, type);
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+            for(int i=0;i<jsonArray.length();i++)
+            {
+                List<String> list = new ArrayList<String>();        //重新new空的list，放入鄉鎮進去
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String country = jsonObject.getString("name");
+                country_list.add(country);
+                JSONArray array = jsonObject.getJSONArray("districts");
+                for(int j=0;j<array.length();j++)
+                {
+                    JSONObject obj = array.getJSONObject(j);
+                    String city = obj.getString("name");
+                    list.add(city);
+                }
+                total_list.add(list);   //將鄉鎮放入二維陣列
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, country_list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp = (Spinner) findViewById(R.id.type);
+        sp = (Spinner) findViewById(R.id.country);
         sp.setAdapter(adapter);
         sp.setOnItemSelectedListener(selectListener);
 
-        //因為下拉選單第一個為茶類，所以先載入茶類群組進第二個下拉選單
-        adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, city);
+
+        adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, total_list.get(0));
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp2 = (Spinner) findViewById(R.id.type2);
+        sp2 = (Spinner) findViewById(R.id.country2);
         sp2.setAdapter(adapter2);
+
 
     }
 
@@ -81,7 +112,7 @@ public class create_account extends AppCompatActivity {
             //讀取第一個下拉選單是選擇第幾個
             int pos = sp.getSelectedItemPosition();
             //重新產生新的Adapter，用的是二維陣列type2[pos]
-            adapter2 = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, type2[pos]);
+            adapter2 = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, total_list.get(pos));
             //載入第二個下拉選單Spinner
             sp2.setAdapter(adapter2);
 
@@ -251,6 +282,29 @@ public class create_account extends AppCompatActivity {
             }
             return result;
         }
+    }
+
+    //從asset讀取json
+    public  String getjson(String filename)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        try{
+            AssetManager assetManager = getAssets();
+            InputStream inputStream = null;
+
+            inputStream = assetManager.open(filename);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while((line = bufferedReader.readLine())!=null)
+            {
+                stringBuilder.append(line);
+            }
+
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 
     public void backtoHome(View view)
