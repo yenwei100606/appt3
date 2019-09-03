@@ -217,6 +217,7 @@ public class URS extends AppCompatActivity implements TextureView.SurfaceTexture
             ActivityCompat.requestPermissions(URS.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
         }else{
             imeipost = telephonyManager.getImei();
+            Log.d("tag","IMEI:"+imeipost);
         }
     }
 
@@ -317,6 +318,7 @@ public class URS extends AppCompatActivity implements TextureView.SurfaceTexture
 
 
                 mPreviewView.setLayoutParams(new FrameLayout.LayoutParams(mPreviewView.getWidth(),mPreviewSize.getHeight(), Gravity.CENTER));
+
                 //ursIV.setLayoutParams(new FrameLayout.LayoutParams(mPreviewView.getWidth(),mPreviewSize.getHeight(), Gravity.CENTER));
 
                 mCameraId = id;
@@ -528,7 +530,9 @@ public class URS extends AppCompatActivity implements TextureView.SurfaceTexture
             //mFile = new File("/storage/emulated/0/DCIM/Camera", fname); 存在相簿
             cw = new ContextWrapper(getApplicationContext());
             directory = cw.getDir("imageDir.jpg", Context.MODE_PRIVATE);
+            Log.e("Path","directory:"+directory);
             mFile = new File(directory, "profile.jpg");
+            Log.e("Path","profile:"+mFile);
 
             try{
                 //Bitmap bitmap = mPreviewView.getBitmap();

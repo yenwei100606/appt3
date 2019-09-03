@@ -132,6 +132,7 @@ public class create_account extends AppCompatActivity {
         String Get_bir=birthday.getText().toString();
         String Get_email=email.getText().toString();
         String Get_addr=sp.getSelectedItem().toString()+sp2.getSelectedItem().toString();
+        Log.d("tag","鄉鎮"+Get_addr);
         String Get_password="";
         String Get_sex="";
         if(sexID==0)
@@ -185,8 +186,7 @@ public class create_account extends AppCompatActivity {
                     });
             builder.show();
 
-        } else if(!check_birthday)
-        {
+        } else if(!check_birthday) {
             AlertDialog.Builder builder = new AlertDialog.Builder(create_account.this)
                     .setTitle("Error")
                     .setMessage("生日格式錯誤\n請按照參考格式重新輸入")
@@ -237,10 +237,10 @@ public class create_account extends AppCompatActivity {
             String addr = data[5];
 
             //String connstr="http://140.116.226.182/mems_client/355758080228806//create_account.php";
-            String connstr="http://192.168.0.108:8080/create_account.php";
+            //String connstr="http://192.168.0.108:8080/create_account.php";
             //String connstr="http://192.168.0.117/mySQL_exe/addInformation.php";
             //String connstr="http://192.168.0.108:8080/psw_login.php";
-            //String connstr="http://140.116.226.182/mems_main/addInformation.php";
+            String connstr="http://140.116.226.182/mems_main/addInformation.php";
             try{
                 URL url = new URL(connstr);
                 HttpURLConnection http = (HttpURLConnection) url.openConnection();

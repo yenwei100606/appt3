@@ -6,21 +6,19 @@
     android:layout_height="match_parent"
     android:layout_centerVertical="true"
     android:background="@drawable/create"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".Main2Activity">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="41dp"
         android:layout_weight="1"
-        android:background="#ffffff"
+        android:background="#727171"
         android:fillViewport="true"
         android:windowSoftInputMode="adjustPan|stateHidden">
 
@@ -29,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#ffffff">
 
 
             <TextView
@@ -228,12 +227,29 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.726" />
 
-            <Button
-                android:id="@+id/button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_send"
-                android:onClick="clickCreate" />
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#81c0c0"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:text="提出申請"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="#81c0c0"
+                    android:onClick="clickCreate" />
+            </LinearLayout>
 
         </LinearLayout>
 

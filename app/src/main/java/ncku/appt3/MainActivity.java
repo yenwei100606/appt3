@@ -45,25 +45,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickFOB(View v){
-        //Intent i = new Intent(this,FOB.class);
-        //startActivity(i);
-        scanIntegrator = new IntentIntegrator(MainActivity.this);
+        Intent i = new Intent(this,FOB.class);
+        startActivity(i);
+        /*scanIntegrator = new IntentIntegrator(MainActivity.this);
         scanIntegrator.setCaptureActivity(Scan_Activity.class);
         scanIntegrator.setPrompt("請掃描");
         scanIntegrator.initiateScan();
         scanIntegrator.setOrientationLocked(false);
-        check="FOB";
+        check="FOB";*/
     }
 
     public void clickURS(View v){
-        //Intent i = new Intent(this,URS.class);
-        //startActivity(i);
-        scanIntegrator1 = new IntentIntegrator(MainActivity.this);
+        Intent i = new Intent(this,URS.class);
+        startActivity(i);
+        /*scanIntegrator1 = new IntentIntegrator(MainActivity.this);
         scanIntegrator1.setCaptureActivity(Scan_Activity.class);
         scanIntegrator1.setPrompt("請掃描");
         scanIntegrator1.initiateScan();
         scanIntegrator1.setOrientationLocked(false);
-        check="URS";
+        check="URS";*/
     }
 
     public void clickHIS(View v){
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 intent_name.setClass(context.getApplicationContext(),fob_instr.class);
                 context.startActivity(intent_name);
 
-            }else if(s.contains("HPYsuccessful")){
+            }else if(s.contains("URSsuccessful")){
                 Intent intent_name = new Intent();
                 intent_name.setClass(context.getApplicationContext(),URS_intr.class);
                 //intent_name.setClass(context.getApplicationContext(),URS.class);
@@ -192,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setMessage("此QRcode已超過使用次數");
                 dialog.show();
             }
+
         }
         @Override
         protected String doInBackground(String... voids) {
@@ -204,7 +205,8 @@ public class MainActivity extends AppCompatActivity {
             //String connstr = "http://10.0.2.2:8080/Login.php";
             //String connstr = "http://140.116.226.171:8080/Login.php";
             //String connstr="http://192.168.0.108:8080/Login.php";
-            String connstr="http://192.168.0.113:8080/qr_login.php";
+            String connstr="http://140.116.226.182/mems_main/qr_login.php";
+            //String connstr="http://192.168.0.113:8080/qr_login.php";
             //String connstr="http://140.116.226.182/mems_client/355758080228806//Login.php";
 
             try {

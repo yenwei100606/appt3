@@ -42,9 +42,10 @@ public class fob_result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fob_result);
+        getSupportActionBar().hide();//隱藏TitleBar
 
         fob_resultTV = (TextView)findViewById(R.id.fob_resultTV);
-        fob_resultTime = (TextView)findViewById(R.id.fob_resultTime);
+        fob_resultTime = (TextView)findViewById(R.id.fob_result);
 
         dbHandler = new MyDBHandler_re(this, null, null, 1);
 
@@ -134,9 +135,9 @@ public class fob_result extends AppCompatActivity {
         protected void onPostExecute(String result){
             fob_resultTV.setText(sqlt);
             mCalendar = Calendar.getInstance();
-            sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            sdf = new SimpleDateFormat("yyyy/MM/dd");
             str = sdf.format(mCalendar.getTime());
-            fob_resultTime.setText(str);
+            fob_resultTime.setText(str+"\nFOB/HPY測試結果");
             object_re object = new object_re(sqlt,str);
             i=0;
             i=dbHandler.addProduct(object);

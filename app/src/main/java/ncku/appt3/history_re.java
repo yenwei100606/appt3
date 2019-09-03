@@ -32,6 +32,7 @@ public class history_re extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_re);
+        getSupportActionBar().hide();//隱藏TitleBar
 
         //create our new array adapter
         dbHandler = new MyDBHandler_re(this, null, null, 1);

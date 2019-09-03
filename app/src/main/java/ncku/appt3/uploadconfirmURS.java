@@ -40,6 +40,7 @@ public class uploadconfirmURS extends AppCompatActivity{
         }
 
         message = Data.getString("picpath");
+        Log.e("Path","message:"+message);
         Toast.makeText(this, "path = "+message , Toast.LENGTH_SHORT).show();
         loadImageFromStorage(message);
         imei();

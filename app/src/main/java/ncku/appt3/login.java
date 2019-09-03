@@ -79,14 +79,15 @@ public class login extends AppCompatActivity {
         {
             //dialog.setMessage(s);
             //dialog.show();
-            if(s.contains("successful"))
+            if(s.contains("success"))
             {
                 Intent intent = new Intent();
                 intent.setClass(login.this,MainActivity.class);
                 startActivity(intent);
 
             }else{
-                dialog.setMessage("帳號密碼有誤");
+                //dialog.setMessage("帳號密碼有誤");
+                dialog.setMessage(s);
                 dialog.show();
             }
 
@@ -99,10 +100,10 @@ public class login extends AppCompatActivity {
             String pass=voids[1];
 
             //String connstr="http://192.168.0.108:8080/psw_login.php";
-            String connstr="http://192.168.0.113:8080/psw_login.php";
+            //String connstr="http://192.168.0.113:8080/psw_login.php";
             //String connstr="http://140.116.226.182/mems_client/355758080228806//psw_login.php";
             //String connstr="http://192.168.0.108:8080/CatchDataTest";
-
+            String connstr="http://140.116.226.182/mems_main/selectDB2.php";
             try{
                 URL url = new URL(connstr);
                 HttpURLConnection http = (HttpURLConnection) url.openConnection();
@@ -112,8 +113,8 @@ public class login extends AppCompatActivity {
 
                 OutputStream ops = http.getOutputStream();
                 BufferedWriter write = new BufferedWriter(new OutputStreamWriter(ops,"UTF-8"));
-                String data = URLEncoder.encode("user","UTF-8")+"="+URLEncoder.encode(user,"UTF-8")
-                        + "&&" +URLEncoder.encode("pass","UTF-8")+"="+URLEncoder.encode(pass,"UTF-8");
+                String data = URLEncoder.encode("loginEmail","UTF-8")+"="+URLEncoder.encode(user,"UTF-8")
+                        + "&&" +URLEncoder.encode("loginPassword","UTF-8")+"="+URLEncoder.encode(pass,"UTF-8");
 
                 write.write(data);
                 write.flush();

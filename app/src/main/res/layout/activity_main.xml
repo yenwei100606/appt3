@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@drawable/create"
+    android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:background="#ffffff"
         android:orientation="vertical"
@@ -28,8 +29,9 @@
             android:padding="5dp">
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_fobandhpy"
@@ -38,6 +40,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/btn_urs"
                 android:onClick="clickURS" />
         </LinearLayout>
@@ -45,12 +48,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/btn_trend"
                 android:onClick="clickTRE" />
@@ -58,6 +63,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/btn_history"
                 android:onClick="clickHIS" />
@@ -65,6 +71,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/btn_example" />
         </LinearLayout>
 
